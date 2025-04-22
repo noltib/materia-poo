@@ -1,3 +1,3 @@
 def iniciais(nome):
-nome.split()
+    nome.split()
 nome = input()
