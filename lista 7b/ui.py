@@ -38,6 +38,7 @@ class UI:
         e = input("E-mail: ")
         f = input("Telefone: ")
         d = datetime.strptime(input("Nascimento (dd/mm/aaaa): "), "%d/%m/%Y")
+        datetime.strftime
         UI.contatos.append(Contato(i, n, e, f, d))
 
     @staticmethod
