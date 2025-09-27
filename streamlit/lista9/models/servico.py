@@ -1,7 +1,8 @@
 import json
 
+
 class Servico:
-    def __init__(self, id: int, descricao: str, valor: float):
+    def __init__(self, id, descricao, valor):
         self.set_id(id)
         self.set_descricao(descricao)
         self.set_valor(valor)
@@ -9,34 +10,38 @@ class Servico:
     def __str__(self):
         return f"{self.__id} - {self.__descricao} - R$ {self.__valor:.2f}"
 
-    # Gets
     def get_id(self): return self.__id
     def get_descricao(self): return self.__descricao
     def get_valor(self): return self.__valor
 
-    # Sets
     def set_id(self, id): self.__id = id
     def set_descricao(self, descricao): self.__descricao = descricao
     def set_valor(self, valor): self.__valor = valor
 
-    # JSON
     def to_json(self):
-        return {"id": self.__id, "descricao": self.__descricao, "valor": self.__valor}
+        dic = {
+            "id": self.__id,
+            "descricao": self.__descricao,
+            "valor": self.__valor
+        }
+        return dic
 
     @staticmethod
     def from_json(dic):
         return Servico(dic["id"], dic["descricao"], dic["valor"])
 
 
+
 class ServicoDAO:
     __objetos = []
 
     @classmethod
-    def inserir(cls, obj: Servico):
+    def inserir(cls, obj):
         cls.abrir()
         id = 0
         for aux in cls.__objetos:
-            if aux.get_id() > id: id = aux.get_id()
+            if aux.get_id() > id: 
+                id = aux.get_id()
         obj.set_id(id + 1)
         cls.__objetos.append(obj)
         cls.salvar()
@@ -47,7 +52,7 @@ class ServicoDAO:
         return cls.__objetos
 
     @classmethod
-    def listar_id(cls, id: int):
+    def listar_id(cls, id):
         cls.abrir()
         for obj in cls.__objetos:
             if obj.get_id() == id:
@@ -55,7 +60,7 @@ class ServicoDAO:
         return None
 
     @classmethod
-    def atualizar(cls, obj: Servico):
+    def atualizar(cls, obj):
         aux = cls.listar_id(obj.get_id())
         if aux != None:
             cls.__objetos.remove(aux)
@@ -63,7 +68,7 @@ class ServicoDAO:
             cls.salvar()
 
     @classmethod
-    def excluir(cls, obj: Servico):
+    def excluir(cls, obj):
         aux = cls.listar_id(obj.get_id())
         if aux != None:
             cls.__objetos.remove(aux)
