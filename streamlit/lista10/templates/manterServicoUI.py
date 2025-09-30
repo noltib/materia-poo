@@ -27,7 +27,7 @@ class ManterServicoUI:
                     "valor": obj.get_valor()
                 })
             df = pd.DataFrame(dic)
-            st.dataframe(df)
+            st.dataframe(df, hide_index=True)
 
     def inserir():
         descricao = st.text_input("Descrição do serviço")

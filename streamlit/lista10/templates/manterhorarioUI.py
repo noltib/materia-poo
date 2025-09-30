@@ -35,11 +35,12 @@ class ManterHorarioUI:
                     "profissional" : profissional
                 })
             df = pd.DataFrame(dic)
-            st.dataframe(df)
+            st.dataframe(df, hide_index=True)
 
     def inserir():
         clientes = View.cliente_listar()
         servicos = View.servico_listar()
+        profissional = View.profissional_listar()
         data = st.text_input("Informe a data e horário do serviço", datetime.now().strftime("%d/%m/%Y %H:%M"))
         confirmado = st.checkbox("Confirmado")
         cliente = st.selectbox("Informe o cliente", clientes, index = None)

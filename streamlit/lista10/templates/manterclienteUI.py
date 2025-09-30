@@ -19,7 +19,7 @@ class ManterClienteUI:
             list_dic = []
             for obj in clientes: list_dic.append(obj.to_json())
             df = pd.DataFrame(list_dic)
-            st.dataframe(df)
+            st.dataframe(df, hide_index=True)
 
     def inserir():
         nome = st.text_input("Informe o nome")
