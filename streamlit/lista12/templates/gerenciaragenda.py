@@ -6,7 +6,7 @@ from datetime import datetime, date
 
 class GerenciarAgendaUI:
     def main():
-        st.header("Cadastro de Horários")
+        st.header("Agenda")
         tab1, tab2= st.tabs(["Listar", "Inserir"])
         with tab1: GerenciarAgendaUI.listar()
         with tab2: GerenciarAgendaUI.inserir()
@@ -44,7 +44,6 @@ class GerenciarAgendaUI:
         st.dataframe(df, hide_index=True)
 
     def inserir():
-        st.subheader("Abrir Minha Agenda")
 
         profissional = View.profissional_listar_id(st.session_state["usuario_id"])
         if profissional is None:
@@ -69,3 +68,5 @@ class GerenciarAgendaUI:
                 inicio += timedelta(minutes=intervalo)
 
             st.success(f"Foram inseridos {len(horarios_gerados)} horários na agenda!")
+            time.sleep(2)
+            st.rerun()

@@ -6,25 +6,21 @@ class MeusServicosUI:
     def main():
         st.header("Meus Serviços")
 
-        # Recupera o cliente logado
         cliente = View.cliente_listar_id(st.session_state["usuario_id"])
         if cliente is None:
             st.warning("Nenhum cliente logado.")
             return
 
-        # Lista todos os horários cadastrados
         horarios = View.horario_listar()
         if len(horarios) == 0:
             st.info("Nenhum horário cadastrado.")
             return
 
-        # Filtra apenas os horários do cliente logado
         horarios_cliente = [h for h in horarios if h.get_id_cliente() == cliente.get_id()]
         if len(horarios_cliente) == 0:
             st.info("Você ainda não possui serviços agendados.")
             return
 
-        # Monta os dados conforme a figura da tarefa 3
         dic = []
         for obj in horarios_cliente:
             servico = View.servico_listar_id(obj.get_id_servico())
@@ -38,6 +34,5 @@ class MeusServicosUI:
                 "profissional": profissional.get_nome() if profissional else None
             })
 
-        # Exibe a tabela idêntica ao exemplo do PDF
         df = pd.DataFrame(dic)
         st.dataframe(df, hide_index=True)

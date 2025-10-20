@@ -15,3 +15,5 @@ class PerfilProfissionalUI:
       id = op.get_id()
       View.profissional_atualizar(id, nome, especialidade, conselho, email, senha)
       st.success("Profissional atualizado com sucesso")
+      time.sleep(2)
+      st.rerun()

@@ -55,6 +55,8 @@ class ManterHorarioUI:
             if servico != None: id_servico = servico.get_id()
             View.horario_inserir(datetime.strptime(data, "%d/%m/%Y %H:%M"), confirmado, id_cliente, id_servico, id_profissional)
             st.success("Horário inserido com sucesso")
+            time.sleep(2)
+            st.rerun()
 
     def atualizar():
         horarios = View.horario_listar()
