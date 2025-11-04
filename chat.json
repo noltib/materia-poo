@@ -1,0 +1,20 @@
+[
+    {
+        "remetente": "b",
+        "destinatario": "a",
+        "mensagem": "bundia",
+        "data": "2025-11-02 17:15:48"
+    },
+    {
+        "remetente": "b",
+        "destinatario": "a",
+        "mensagem": "aaaaaaa",
+        "data": "2025-11-02 17:15:49"
+    },
+    {
+        "remetente": "a",
+        "destinatario": "b",
+        "mensagem": "hallo",
+        "data": "2025-11-02 17:16:04"
+    }
+]
