@@ -9,6 +9,7 @@ class ChatUI_P:
     def main():
         st.header("Chat entre Profissional e Cliente")
         cliente = View.cliente_listar()
+        cliente = [ c for c in cliente if c.get_email() != "admin" ]
         if len(cliente) == 0: st.write("Nenhum cliente cadastrado")
         usuario_p = View.profissional_listar_id(st.session_state["profissional_id"])
         usuario, n_usuario, f_usuario = usuario_p.get_email(), usuario_p.get_nome(), usuario_p.get_foto()
